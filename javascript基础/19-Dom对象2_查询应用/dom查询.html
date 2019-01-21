@@ -5,63 +5,19 @@
 		<title>Untitled Document</title>
 		<link rel="stylesheet" type="text/css" href="style/css.css" />
 		<script type="text/javascript">
-		window.onclick = function(id,event){
-			var btn = document.querySelector("#" + id)
-    		btn.alert(event)
-		}
 		
 			window.onload = function(){
 				//查找#bj节点
-				var bj = document.getElementById("bj")
-				console.log(bj)
 				//查找所有li节点
-				var li = document.getElementsByTagName("li")
-				var arr = Array.prototype.slice.call(li)
-				arr.map(function(item){
-					console.log(item)
-				})
 				//查找name=gender的所有节点
-				var gender = document.getElementsByName("gender")
-				var arr = Array.prototype.slice.call(gender)
-				arr.map(function(item){
-					console.log(item)
-				})
 				//查找#city下所有li节点
-				var cityLi = document.querySelectorAll("#city li")
-				var arr = Array.prototype.slice.call(cityLi)
-				arr.map(function(item){
-					console.log(item)
-				})
 				//返回#city的所有子节点
-				var cith = document.querySelector("#city")
-				var citychildren = city.children
-				var arr = Array.prototype.slice.call(citychildren)
-				arr.map(function(item){
-					console.log(item)
-				})
 				//返回#phone的第一个子节点
-				var phone = document.querySelector("#phone")
-				var phonechild = phone.firstChild
-				console.log(phonechild)
 				//返回#bj的父节点
-				var childbj = document.querySelector("#bj")
-				var fatherbj = childbj.parentElement
-				console.log(fatherbj)
 				//返回#android的前一个兄弟节点
-				var android = document.querySelector("#android")
-				var lastborther = android.previousElementSibling
-				console.log(lastborther)
 				//读取#username的value属性值
-				var username = document.querySelector("#username")
-				var usernamevalue = username.getAttribute("value")
-				console.log(usernamevalue)
 				//设置#username的value属性值
-				username.setAttribute("value","1234")
-				
 				//返回#bj的文本值
-				var textbj = document.querySelector("#bj")
-				var text = textbj.innerHTML
-				console.log(text)
 				
 			};
 			
