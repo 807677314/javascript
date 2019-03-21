@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+
+<script src="./react.min.js"></script>
+<script src="./react-dom.min.js"></script>
+<script src="./babel.min.js"></script>
+
+<script type="text/babel">
+
+    class NewsList extends React.Component{
+        constructor(...args){
+            super(...args)
+            //把属性的值放到状态中
+            this.state = {
+                data:this.props.data 
+            }
+        }
+
+        deleteNewsById(id){
+           this.setState({
+               data:this.state.data.filter( item=>item.id !== id )
+           })
+        }
+
+        render(){
+            //通过状态进行新闻数据的遍历，因为状态才可以修改
+            let news = this.state.data.map((item,index)=>{
+                return <News key={index} title={item.title} time={item.time} id={item.id} refComponent={this} />
+            })
+
+            return (
+                <div>
+                    {news}
+                </div>
+            )
+        }
+
+    }
+
+    class News extends React.Component{
+        constructor(...args){
+            super(...args)
+        }
+
+        delNews(){
+            this.props.refComponent.deleteNewsById(this.props.id)
+        }
+
+        render(){
+            return (
+                <p>id:{this.props.id},title:{this.props.title},time:{this.props.time}&nbsp;&nbsp;&nbsp;<a href="javascript:;" onClick={this.delNews.bind(this)}>删除</a></p>
+            )
+        }
+    }
+
+
+    ReactDOM.render(<NewsList  data={[
+        {id:100,title:"this is news-1",time:"2019-03-01"},
+        {id:200,title:"this is news-2",time:"2019-03-02"},
+        {id:300,title:"this is news-3",time:"2019-03-03"},
+        {id:400,title:"this is news-4",time:"2019-03-04"}
+    ]} />,document.getElementById("root") )
+</script>
+</html>
